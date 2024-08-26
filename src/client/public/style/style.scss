@@ -1,0 +1,103 @@
+@import './breakPoints';
+
+@mixin transparent() {
+  background: transparent;
+  color: white;
+  border-radius: 10px;
+  padding: 30px 40px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url('../images/pic.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Roboto', sans-serif;
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    .site-header {
+      @include transparent();
+
+      .site-title {
+        font-size: 23px;
+
+        @include respond-to('sm') {
+          font-size: 48px;
+        }
+        margin: 0;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+
+    #form_row {
+      background: transparent;
+      @include transparent();
+      width: 90%;
+      @include respond-to('lg') {
+        width: 70%;
+      }
+
+      #city_error {
+        display: none;
+      }
+      #date_error {
+        display: none;
+      }
+
+      .dark-mode-button {
+        padding: 5px 10px;
+        margin: 20px auto;
+        width: 100%;
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: all 0.3s;
+        &:hover {
+          background-color: #3a3838;
+          color: #ddd;
+          font-size: 17px;
+        }
+        &:active {
+          background-color: #222;
+          color: #ccc;
+        }
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 5px #999;
+        }
+      }
+      .flight_data {
+        margin: 10px auto;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 10px;
+        padding: 10px;
+        img {
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+          width: 95%;
+          margin: 10px;
+        }
+      }
+    }
+  }
+}
