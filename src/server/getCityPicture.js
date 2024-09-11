@@ -1,14 +1,15 @@
  axios = require("axios")
 
 
-const getCityPicture = async(city, key) => {
-    const {data} = await axios.get(`https://pixabay.com/api/?key=${key}&q=${city}&image_type=photo`)
-    const image =await data.hits[0]? await data.hits[0].webformatURL: "https://source.unsplash.com/random/640x480?city,morning,night?sig=1"
+const picture = async(nameOfCity, key) => {
+    const data = await axios.get(`https://pixabay.com/api/?key=${key}&q=${nameOfCity}&image_type=photo`)
+    const image = data.data.hits[0].webformatURL
+    console.log(image)
     if(image){
     return {image}
     }
 }
 
 module.exports = {
-    getCityPicture
+    picture
 }
